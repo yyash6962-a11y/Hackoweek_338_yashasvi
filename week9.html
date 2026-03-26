@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather App</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Card */
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+input {
+    padding: 10px;
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background: #4facfe;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.weather {
+    margin-top: 20px;
+}
+
+.temp {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 40px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<h2>Weather App 🌦️</h2>
+<p><b>Yashasvi Yadav</b> | 1st Year CSE</p>
+
+<input type="text" id="city" placeholder="Enter city">
+<br>
+<button onclick="getWeather()">Search</button>
+
+<div class="weather" id="weatherResult"></div>
+
+</div>
+
+<script>
+function getWeather() {
+    let city = document.getElementById("city").value.toLowerCase();
+    let result = document.getElementById("weatherResult");
+
+    // Mock data
+    let data = {
+        "pune": {temp: "28°C", condition: "Sunny ☀️"},
+        "mumbai": {temp: "30°C", condition: "Humid 🌤️"},
+        "delhi": {temp: "25°C", condition: "Foggy 🌫️"},
+        "bangalore": {temp: "22°C", condition: "Rainy 🌧️"}
+    };
+
+    if(data[city]) {
+        result.innerHTML = `
+            <div class="temp">${data[city].temp}</div>
+            <div>${data[city].condition}</div>
+        `;
+    } else {
+        result.innerHTML = "City not found 😅";
+    }
+}
+</script>
+
+</body>
+</html>

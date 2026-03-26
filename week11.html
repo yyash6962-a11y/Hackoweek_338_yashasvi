@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Form</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+}
+
+/* Container */
+.container {
+    max-width: 400px;
+    margin: 60px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+}
+
+/* Inputs */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ff758c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e8436f;
+}
+
+/* Messages */
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.success {
+    color: green;
+    text-align: center;
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<h2>Contact Us</h2>
+<p><b>Yashasvi Yadav</b> | 1st Year CSE BTech</p>
+
+<form id="contactForm">
+
+<input type="text" id="name" placeholder="Your Name">
+<div class="error" id="nameError"></div>
+
+<input type="email" id="email" placeholder="Your Email">
+<div class="error" id="emailError"></div>
+
+<textarea id="message" placeholder="Your Message"></textarea>
+<div class="error" id="messageError"></div>
+
+<button type="button" onclick="validateForm()">Submit</button>
+
+</form>
+
+<div id="successMsg" class="success"></div>
+
+</div>
+
+<script>
+function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    let valid = true;
+
+    // Clear previous errors
+    document.getElementById("nameError").innerText = "";
+    document.getElementById("emailError").innerText = "";
+    document.getElementById("messageError").innerText = "";
+    document.getElementById("successMsg").innerText = "";
+
+    // Name validation
+    if(name === "") {
+        document.getElementById("nameError").innerText = "Name is required";
+        valid = false;
+    }
+
+    // Email validation
+    if(email === "") {
+        document.getElementById("emailError").innerText = "Email is required";
+        valid = false;
+    } else if(!email.includes("@")) {
+        document.getElementById("emailError").innerText = "Enter valid email";
+        valid = false;
+    }
+
+    // Message validation
+    if(message === "") {
+        document.getElementById("messageError").innerText = "Message cannot be empty";
+        valid = false;
+    }
+
+    // Success
+    if(valid) {
+        document.getElementById("successMsg").innerText = "Form Submitted Successfully 🎉";
+        document.getElementById("contactForm").reset();
+    }
+}
+</script>
+
+</body>
+</html>

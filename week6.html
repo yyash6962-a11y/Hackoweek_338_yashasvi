@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz App</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+h1 {
+    text-align: center;
+}
+
+.question {
+    margin: 20px 0;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+button:hover {
+    background: #5a67d8;
+}
+
+.result {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<h1>Web Development Quiz</h1>
+<p><b>Name:</b> Yashasvi Yadav | 1st Year CSE BTech</p>
+
+<form id="quizForm">
+
+<div class="question">
+<p>1. What does HTML stand for?</p>
+<input type="radio" name="q1" value="0"> Hyper Trainer Marking Language<br>
+<input type="radio" name="q1" value="1"> Hyper Text Markup Language<br>
+<input type="radio" name="q1" value="0"> Hyper Text Marketing Language<br>
+</div>
+
+<div class="question">
+<p>2. Which tag is used for paragraphs?</p>
+<input type="radio" name="q2" value="1"> &lt;p&gt;<br>
+<input type="radio" name="q2" value="0"> &lt;h1&gt;<br>
+<input type="radio" name="q2" value="0"> &lt;div&gt;<br>
+</div>
+
+<div class="question">
+<p>3. Which language is used for styling?</p>
+<input type="radio" name="q3" value="0"> HTML<br>
+<input type="radio" name="q3" value="1"> CSS<br>
+<input type="radio" name="q3" value="0"> Python<br>
+</div>
+
+<div class="question">
+<p>4. Which is used for logic?</p>
+<input type="radio" name="q4" value="0"> CSS<br>
+<input type="radio" name="q4" value="1"> JavaScript<br>
+<input type="radio" name="q4" value="0"> HTML<br>
+</div>
+
+<div class="question">
+<p>5. Which symbol is used for ID in CSS?</p>
+<input type="radio" name="q5" value="1"> #<br>
+<input type="radio" name="q5" value="0"> .<br>
+<input type="radio" name="q5" value="0"> $<br>
+</div>
+
+<button type="button" onclick="checkAnswers()">Submit Quiz</button>
+
+</form>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+function checkAnswers() {
+    let score = 0;
+    let total = 5;
+
+    let form = document.forms["quizForm"];
+
+    for (let i = 1; i <= total; i++) {
+        let q = form["q" + i];
+        for (let j = 0; j < q.length; j++) {
+            if (q[j].checked) {
+                score += Number(q[j].value);
+            }
+        }
+    }
+
+    let resultText = "You scored " + score + " out of " + total;
+
+    if(score == 5){
+        resultText += " 🎉 Excellent!";
+    } else if(score >= 3){
+        resultText += " 👍 Good Job!";
+    } else {
+        resultText += " 😅 Keep Practicing!";
+    }
+
+    document.getElementById("result").innerHTML = resultText;
+}
+</script>
+
+</body>
+</html>ik,

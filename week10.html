@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f9;
+}
+
+/* Header */
+header {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: 30px auto;
+}
+
+/* Search */
+input {
+    padding: 10px;
+    width: 250px;
+    margin-bottom: 15px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background: #3498db;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+/* Grades */
+.high { color: green; font-weight: bold; }
+.medium { color: orange; }
+.low { color: red; }
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #2c3e50;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Student Dashboard</h1>
+<p>Yashasvi Yadav | 1st Year CSE BTech</p>
+</header>
+
+<div class="container">
+
+<input type="text" id="search" placeholder="Search student..." onkeyup="searchTable()">
+
+<table id="studentTable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Roll No</th>
+<th>Branch</th>
+<th>Marks</th>
+<th>Grade</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Rahul Sharma</td>
+<td>101</td>
+<td>CSE</td>
+<td>85</td>
+<td class="high">A</td>
+</tr>
+
+<tr>
+<td>Priya Singh</td>
+<td>102</td>
+<td>IT</td>
+<td>72</td>
+<td class="medium">B</td>
+</tr>
+
+<tr>
+<td>Amit Verma</td>
+<td>103</td>
+<td>ECE</td>
+<td>60</td>
+<td class="medium">C</td>
+</tr>
+
+<tr>
+<td>Sneha Patel</td>
+<td>104</td>
+<td>CSE</td>
+<td>92</td>
+<td class="high">A+</td>
+</tr>
+
+<tr>
+<td>Rohan Gupta</td>
+<td>105</td>
+<td>ME</td>
+<td>48</td>
+<td class="low">D</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+<footer>
+<p>© 2026 Student Dashboard</p>
+</footer>
+
+<script>
+function searchTable() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let rows = document.querySelectorAll("#studentTable tbody tr");
+
+    rows.forEach(row => {
+        let text = row.innerText.toLowerCase();
+        row.style.display = text.includes(input) ? "" : "none";
+    });
+}
+</script>
+
+</body>
+</html>

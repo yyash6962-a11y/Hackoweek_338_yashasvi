@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Event Registration</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+}
+
+.container{
+    width:40%;
+    margin:50px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+}
+
+button{
+    background:#3498db;
+    color:white;
+    border:none;
+    padding:12px;
+    width:100%;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2980b9;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Tech Fest Registration</h1>
+<p><b>Name:</b> Yashasvi Yadav | 1st Year CSE BTech</p>
+
+<form>
+
+<label>Full Name</label>
+<input type="text" placeholder="Enter your name" required>
+
+<label>Email</label>
+<input type="email" placeholder="Enter your email" required>
+
+<label>Phone Number</label>
+<input type="tel" placeholder="Enter your phone number">
+
+<label>College Name</label>
+<input type="text" placeholder="Enter your college">
+
+<label>Select Event</label>
+<select>
+<option>Hackathon</option>
+<option>Coding Competition</option>
+<option>Robotics</option>
+<option>Gaming Tournament</option>
+</select>
+
+<label>Gender</label>
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female
+<input type="radio" name="gender"> Other
+
+<br><br>
+
+<button type="submit">Register</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
