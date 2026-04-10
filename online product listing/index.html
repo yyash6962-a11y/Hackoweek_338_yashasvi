@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Product Listing</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons via CDN for standard vanilla usage -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar glass">
+    <div class="nav-left">
+      <button id="mobile-menu-btn" class="icon-btn mobile-only">
+        <i data-lucide="menu"></i>
+      </button>
+      <a href="#" class="logo">Sneaker<span>Verse</span></a>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-container">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search for Nike, Adidas, Rackets...">
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="icon-btn">
+        <i data-lucide="heart"></i>
+      </button>
+      <button class="icon-btn cart-btn">
+        <i data-lucide="shopping-cart"></i>
+        <span class="badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <div class="app-container">
+    
+    <!-- Sidebar / Filters -->
+    <aside class="sidebar glass" id="sidebar">
+      <div class="filter-group">
+        <h3>Category</h3>
+        <label class="radio-label">
+          <input type="radio" name="category" value="All" checked> All Products
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="category" value="Sneakers"> Sneakers
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="category" value="Basketball Shoes"> Basketball Shoes
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="category" value="Sports Gear"> Sports Gear
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <h3>Max Price: ₹<span id="priceValue">20000</span></h3>
+        <input type="range" id="priceRange" min="0" max="20000" step="100" value="20000">
+      </div>
+
+      <div class="filter-group">
+        <h3>Rating</h3>
+        <label class="radio-label">
+          <input type="radio" name="rating" value="0" checked> Any Rating
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="rating" value="4.5"> 4.5★ & Above
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="rating" value="4.0"> 4.0★ & Above
+        </label>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <div class="content-header">
+        <div>
+          <h2>Our Collection</h2>
+          <p id="resultCount">Loading products...</p>
+        </div>
+        <select id="sortSelect" class="modern-select">
+          <option value="default">Sort by Relevance</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+        </select>
+      </div>
+
+      <!-- Grid Map -->
+      <div class="grid-container" id="productGrid">
+        <!-- JS injects cards here -->
+      </div>
+
+      <!-- Pagination / Lazy Loading Button -->
+      <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+        <button id="loadMoreBtn" class="primary-btn outline">Load More Details</button>
+      </div>
+
+    </main>
+    
+    <!-- Overlay for mobile sidebar -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
