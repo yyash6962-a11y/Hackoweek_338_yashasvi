@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List | Hack-o-Week</title>
+
+  <style>
+    /* ===== Modern Color Theme ===== */
+    :root {
+      --bg-gradient: linear-gradient(135deg, #667eea, #764ba2);
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --text: #ffffff;
+      --accent: #ff7a18;
+      --completed: #00c9a7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: var(--bg-gradient);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 450px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    li {
+      background: rgba(255,255,255,0.15);
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    li.completed {
+      text-decoration: line-through;
+      color: var(--completed);
+    }
+
+    .actions button {
+      margin-left: 5px;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .delete {
+      color: #ff4d4d;
+    }
+
+    .complete {
+      color: #00ffcc;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>✨ To-Do List</h1>
+
+    <div class="input-group">
+      <input type="text" id="taskInput" placeholder="Enter a new task...">
+      <button onclick="addTask()">Add</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    const taskInput = document.getElementById("taskInput");
+    const taskList = document.getElementById("taskList");
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    function renderTasks() {
+      taskList.innerHTML = "";
+      tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.className = task.completed ? "completed" : "";
+
+        li.innerHTML = `
+          ${task.text}
+          <div class="actions">
+            <button class="complete" onclick="toggleTask(${index})">✔</button>
+            <button class="delete" onclick="deleteTask(${index})">✖</button>
+          </div>
+        `;
+
+        taskList.appendChild(li);
+      });
+    }
+
+    function addTask() {
+      if (taskInput.value.trim() === "") return;
+
+      tasks.push({ text: taskInput.value, completed: false });
+      taskInput.value = "";
+      saveTasks();
+    }
+
+    function toggleTask(index) {
+      tasks[index].completed = !tasks[index].completed;
+      saveTasks();
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      saveTasks();
+    }
+
+    function saveTasks() {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      renderTasks();
+    }
+
+    renderTasks();
+  </script>
+
+</body>
+</html>
